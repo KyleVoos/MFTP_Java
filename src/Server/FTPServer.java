@@ -1,10 +1,13 @@
 package Server;
 
 import java.io.IOException;
+import java.net.InetAddress;
 import java.net.ServerSocket;
 import java.net.Socket;
 
 public class FTPServer {
+
+    public static InetAddress serverAddress;
 
     public static void main(String[] args) {
 
@@ -12,6 +15,7 @@ public class FTPServer {
 
         try {
             serverSocket = new ServerSocket(21);
+            serverAddress = serverSocket.getInetAddress();
             System.out.println("FTP Server started. Listening on port 21.");
             while (true) {
                 Socket newClientConnection = serverSocket.accept();

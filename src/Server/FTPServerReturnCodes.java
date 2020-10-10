@@ -13,7 +13,7 @@ public final class FTPServerReturnCodes {
     public final static String CLOSING_CONTROL_CON = "221 Service closing control connection.";
     public final static String CON_OPEN_NO_TRANSFER = "225 Data connection open; no transfer in progress.";
     public final static String CLOSING_DATA_CON = "226 Closing data connection.";
-    public final static String PASSIVE_MODE = "227 Entering Passive Mode";
+    public final static String PASSIVE_MODE = "227 Entering Passive Mode (%s,%d,%d)";
 
     // 300 Series - Command accepted, but action on hold until further information is received
     public final static String NEED_PASSWORD = "331 User name okay, need password.";
