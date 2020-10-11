@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.net.InetAddress;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.util.ArrayList;
+import java.util.List;
 
 public class FTPServer {
 
@@ -12,7 +14,7 @@ public class FTPServer {
     public static void main(String[] args) {
 
         ServerSocket serverSocket = null;
-
+        List<Thread> threads = new ArrayList<>();
         try {
             serverSocket = new ServerSocket(21);
             serverAddress = serverSocket.getInetAddress();
@@ -20,7 +22,7 @@ public class FTPServer {
             while (true) {
                 Socket newClientConnection = serverSocket.accept();
                 System.out.println(String.format("new client from %s connected.", newClientConnection.getLocalAddress()));
-                new ClientControlConnection(newClientConnection);
+                threads.add(new Thread(new ClientControlConnection(newClientConnection)));
             }
         }
         catch (IOException ex) {
